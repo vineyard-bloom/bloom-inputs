@@ -1,0 +1,95 @@
+{
+  "name": "bloom-inputs",
+  "version": "2.0.0",
+  "description": "accessible inputs used in bloom packages",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack --config=webpack.config.js",
+    "lint": "./node_modules/.bin/eslint './src/**/*.{js,jsx}' './tests/**/*.js' --config ./.eslintrc --fix --ext .js,.jsx --ignore-path ./.eslintignore",
+    "lint-staged": "./node_modules/.bin/eslint --config .eslintrc --fix --ignore-path .eslintignore",
+    "prettify": "node ./scripts/cross-os-prettier.js",
+    "prettify-staged": "prettier --config .prettierrc --write",
+    "pre-commit": "npm run build && git add index.js && lint-staged",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vineyard-bloom/bloom-layout.git"
+  },
+  "keywords": [
+    "bloom",
+    "vineyard",
+    "inputs",
+    "form",
+    "components",
+    "react",
+    "accessible"
+  ],
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "npm run prettify-staged",
+      "npm run lint-staged",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build && npm run pre-commit"
+    }
+  },
+  "author": "inkblotty (http://inkblotty.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vineyard-bloom/bloom-layout/issues"
+  },
+  "homepage": "https://github.com/vineyard-bloom/bloom-layout#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "bignumber.js": "^6.0.0",
+    "bloom-forms": "^1.2.0",
+    "css-loader": "^0.28.8",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "file-loader": "^1.1.5",
+    "husky": "^0.15.0-rc.2",
+    "ignore-styles": "^5.0.1",
+    "immer": "^1.1.1",
+    "jsdom": "^11.2.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.1.3",
+    "prop-types": "^15.5.10",
+    "react": "^16.2.0",
+    "react-dom": "16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-test-renderer": "^16.2.0",
+    "react-transition-group": "^2.2.1",
+    "redux": "^3.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "lint-staged": "^7.0.0",
+    "mocha": "^5.0.1",
+    "prettier": "1.10.2",
+    "sinon": "^4.4.2"
+  }
+}
