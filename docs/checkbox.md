@@ -1,5 +1,31 @@
 # Checkbox
 
+### Examples
+#### General Use:
+```
+  <Checkbox
+    checked={!!this.props.agreed.value}
+    error={this.props.agreed.error}
+    name='agreed'
+    label='Do you agree?'
+    onChange={(e) => this.props.updateField('agreed', e.target.value)}
+  />
+```
+
+#### Bloom-Forms use:
+```
+  const { checkField, formData, updateField } = this.props
+
+  <Checkbox
+    checked={formData.agreed.value}
+    error={formData.agreed.error}
+    name='agreed'
+    label='Do you agree?'
+    onBlur={checkField}
+    onChange={updateField}
+  />
+```
+
 ### Required Props
 - `checked`:
   A boolean for if the element is checked or not. Usually populated like `formData.field.value`.
@@ -15,7 +41,7 @@
   A string for styling the checkbox input.
 - `containerClass`:
   A string for styling the entire div around the input and its label.
-- `errors`:
+- `error`:
   A string for displaying errors. Usually populated like `formData.field.error`.
 - `labelClass`:
   A string for styling the label text.
