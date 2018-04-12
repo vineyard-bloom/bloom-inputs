@@ -75,6 +75,7 @@ module.exports = {
   resolve: {
     alias: {
       styles: path.resolve(__dirname, 'src/styles'),
+      util: path.resolve(__dirname, 'src/util')
     },
     extensions: ['.webpack.js', '.web.js', '.jsx', '.js', '.html', '.scss']
   }
