@@ -11,6 +11,7 @@ The requirements surrounding accessibility in user-driven fields can be a lot of
 - [CurrencyInput](https://github.com/vineyard-bloom/bloom-inputs/blob/master/docs/currency-input.md)
 - [DateInput](https://github.com/vineyard-bloom/bloom-inputs/blob/master/docs/date-input.md)
 - [Dropzone](https://github.com/vineyard-bloom/bloom-inputs/blob/master/docs/dropzone.md)
+- [ErrorTip](https://github.com/vineyard-bloom/bloom-inputs/blob/master/docs/error-tip.md)
 - [FileInput](https://github.com/vineyard-bloom/bloom-inputs/blob/master/docs/file-input.md)
 - [NumberInput](https://github.com/vineyard-bloom/bloom-inputs/blob/master/docs/number-input.md)
 - [RadioGroup & RadioButtonGroup](https://github.com/vineyard-bloom/bloom-inputs/blob/master/docs/radio-group-and-radio-button-group.md)

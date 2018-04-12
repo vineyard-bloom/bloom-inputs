@@ -4,7 +4,7 @@ TOGGLE SWITCH
 aka a checkbox that looks like a switch
 */
 
-@import './variables';
+@import '~styles/variables';
 
 $active-color: $green;
 $disabled-color: #ddd;
