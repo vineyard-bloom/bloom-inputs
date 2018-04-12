@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: BUILD_DIR,
-    library: 'bloom-layout',
+    library: 'bloom-inputs',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
