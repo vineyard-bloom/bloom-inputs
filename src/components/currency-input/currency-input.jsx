@@ -153,7 +153,7 @@ CurrencyInput.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.string,
   formData: PropTypes.object,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   label: PropTypes.string.isRequired,
   labelClass: PropTypes.string,
   maximumValue: PropTypes.oneOfType([

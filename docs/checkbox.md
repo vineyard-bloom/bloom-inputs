@@ -1,5 +1,9 @@
 # Checkbox
 
+A styleable, semantic, accessible checkbox. Attributes not in the below Required and Optional props can be passed in, but must be HTML5 attributes.
+
+The checked background image of the Checkbox can be styled via `.Input--checked--placeholder.is-checked`.
+
 ### Examples
 #### General Use:
 ```
@@ -15,6 +19,8 @@
 #### Bloom-Forms use:
 ```
   const { checkField, formData, updateField } = this.props
+  
+  ...
 
   <Checkbox
     checked={formData.agreed.value}

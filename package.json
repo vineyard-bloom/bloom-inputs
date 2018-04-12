@@ -37,7 +37,7 @@
       "pre-commit": "npm run build && npm run pre-commit"
     }
   },
-  "author": "inkblotty (http://inkblotty.github.io)",
+  "author": "vineyard-bloom (https://www.npmjs.com/org/vineyard-bloom)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vineyard-bloom/bloom-layout/issues"

@@ -58,6 +58,8 @@ class Checkbox extends React.Component {
       showLabelBeforeCheckbox,
       suppressErrors,
       validateAs,
+      onBlur,
+      onChange,
       onFocus,
       ...props
     } = this.props
@@ -65,7 +67,7 @@ class Checkbox extends React.Component {
       showLabel ? '' : ' u-sr-only'
     }`
 
-    const attr = {}
+    const attr = { ...props }
     if (props.required) {
       attr['aria-required'] = true
       attr.required = true
@@ -83,7 +85,7 @@ class Checkbox extends React.Component {
       attr.checked = checked
     }
 
-    if (!props.onChange) {
+    if (!onChange) {
       attr.readOnly = true
     }
 
@@ -121,7 +123,7 @@ class Checkbox extends React.Component {
           data-validate={validateAs}
           id={name}
           name={name}
-          onChange={props.onChange}
+          onChange={onChange}
           type='checkbox'
           {...attr}
         />
