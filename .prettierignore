@@ -3,4 +3,7 @@
 **/dist/**
 **/scripts/**
 **/webpack.config.js
+**/example/dist/**
+**/example/node_modules/**
+**/example/webpack.config.js
 ./index.js

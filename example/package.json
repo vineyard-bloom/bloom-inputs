@@ -1,11 +1,11 @@
 {
-  "name": "bloom-inputs-example",
+  "name": "bloom-forms-example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "rm -rf dist/*.js && ./node_modules/.bin/webpack && ./node_modules/.bin/webpack-dev-server --hot --inline",
-    "build": "echo \"No build script for examples\"",
+    "build": "echo \"No build script for example form\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "inkblotty",
@@ -19,6 +19,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "bloom-forms": "^1.4.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.8",
     "eslint": "^4.16.0",

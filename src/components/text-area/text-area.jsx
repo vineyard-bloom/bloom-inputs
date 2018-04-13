@@ -86,7 +86,7 @@ class TextArea extends React.Component {
       attr.value = value
     }
 
-    if (!props.onChange) {
+    if (!onChange) {
       attr.readOnly = true
     }
 
@@ -141,10 +141,6 @@ TextArea.propTypes = {
   suppressErrors: PropTypes.bool,
   validateAs: PropTypes.string,
   value: PropTypes.string
-}
-
-TextArea.defaultProps = {
-  value: ''
 }
 
 export default TextArea

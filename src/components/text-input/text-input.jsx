@@ -89,7 +89,7 @@ class TextInput extends React.Component {
       attr.value = value
     }
 
-    if (!props.onChange) {
+    if (!onChange) {
       attr.readOnly = true
     }
 
@@ -155,10 +155,6 @@ TextInput.propTypes = {
   suppressErrors: PropTypes.bool,
   validateAs: PropTypes.string,
   value: PropTypes.string
-}
-
-TextInput.defaultProps = {
-  value: ''
 }
 
 export default TextInput

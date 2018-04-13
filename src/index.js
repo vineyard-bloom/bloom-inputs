@@ -1,6 +1,7 @@
 import Checkbox from './components/checkbox'
 import CurrencyInput from './components/currency-input'
 import DateInput from './components/date-input'
+import Dropzone from './components/dropzone'
 import ErrorTip from './components/error-tip'
 import FileInput from './components/file-input'
 import RadioGroup from './components/radio-group'
