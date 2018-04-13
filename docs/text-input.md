@@ -2,6 +2,31 @@
 
 TextInput is a single line text input used most often in forms.
 
+### Examples
+#### General
+```
+  <TextInput
+    label='First Name'
+    name='firstName'
+    onChange={(e) => this.props.updateFirstName(e.target.value)}
+    value={this.props.firstName.value}
+  />
+```
+
+#### Bloom-Forms use
+```
+  const { checkField, formData, updateField } = this.props
+
+  <TextArea
+    formData={formData}
+    label='First Name'
+    name='firstName'
+    onBlur={checkField}
+    onChange={updateField}
+    validateAs='not-empty'
+  />
+```
+
 ### Required Props
 - `label`:
   Either a string or a React element that labels the `TextInput`. Required for accessibility purposes, but hidden by default.

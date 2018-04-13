@@ -54,6 +54,8 @@ class RadioButtonGroup extends React.Component {
       name,
       labelClass,
       legend,
+      onBlur,
+      onChange,
       onFocus,
       options,
       suppressErrors,
@@ -65,7 +67,7 @@ class RadioButtonGroup extends React.Component {
       labelClass ? labelClass : ''
     }`
 
-    let attr = {}
+    let attr = { ...props }
 
     if (props.required) {
       attr['aria-required'] = true
@@ -120,7 +122,7 @@ class RadioButtonGroup extends React.Component {
                 data-validate={validateAs}
                 id={id}
                 name={name}
-                onChange={props.onChange}
+                onChange={onChange}
                 type='radio'
                 {...attr}
               />

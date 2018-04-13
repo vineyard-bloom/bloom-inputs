@@ -54,6 +54,8 @@ class TextArea extends React.Component {
       name,
       label,
       labelClass,
+      onBlur,
+      onChange,
       placeholder,
       showLabel,
       suppressErrors,
@@ -65,7 +67,7 @@ class TextArea extends React.Component {
       showLabel ? '' : ' u-sr-only'
     }`
 
-    let attr = {}
+    let attr = { ...props }
 
     if (props.required) {
       attr['aria-required'] = true
@@ -107,8 +109,8 @@ class TextArea extends React.Component {
         <textarea
           style={{ minHeight: '100px', resize: 'none', width: '100%' }}
           data-validate={validateAs}
-          onChange={props.onChange}
-          onBlur={props.onBlur}
+          onChange={onChange}
+          onBlur={onBlur}
           name={name}
           id={name}
           className={`Input Input--text ${className ? className : ''} ${

@@ -2,6 +2,33 @@
 
 The ToggleSwitch is a hidden checkbox that appears in the UI like a sideways light switch. In the DOM, it looks either 'on' or 'off' depending on the `isActive` prop.
 
+### Examples
+#### General
+```
+  <ToggleSwitch
+    name='notifications'
+    innerLabels={{ on: 'On', off: 'Off' }}
+    isActive={this.props.notifications.value}
+    labelText='Email Notifications'
+    onClick={(e) => this.props.toggleNotifications(e.target.value)}
+  />
+```
+
+#### Bloom-Forms use
+```
+  const { formData, updateField } = this.props
+  
+  ...
+
+  <ToggleSwitch
+    name='notifications'
+    innerLabels={{ on: 'On', off: 'Off' }}
+    isActive={formData.notifications.value}
+    labelText='Email Notifications'
+    onClick={updateField}
+  />
+```
+
 ### Required Props
 - `name`:
   A string tying the `formData` to the input's value. It should match one of the strings in `fieldNames` array passed into `<Form>`.

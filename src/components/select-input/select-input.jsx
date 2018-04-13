@@ -388,8 +388,10 @@ class SelectInput extends React.Component {
       name,
       label,
       loading,
+      onBlur,
       onChange,
       options,
+      placeholder,
       showLabel,
       suppressErrors,
       typeAhead,
@@ -397,7 +399,7 @@ class SelectInput extends React.Component {
       value,
       ...props
     } = this.props
-    const sortedOpts = this.state.sortedOpts || this.props.options
+    const sortedOpts = this.state.sortedOpts || options
 
     const opts = sortedOpts.map((opt, i) => {
       return opt.label ? (
@@ -413,7 +415,7 @@ class SelectInput extends React.Component {
 
     const placeholderOpts = this.renderPlaceholderOptions(sortedOpts)
 
-    let attr = {}
+    let attr = { ...props }
 
     if (props.required) {
       attr['required'] = true
@@ -435,7 +437,7 @@ class SelectInput extends React.Component {
       attr.value = value
     }
 
-    if (!props.onChange) {
+    if (!onChange) {
       attr.readOnly = true
     }
 
@@ -501,7 +503,7 @@ class SelectInput extends React.Component {
               name='autofill-buster'
               onChange={this.sortResults}
               onClick={() => this.setState({ showList: true })}
-              placeholder={this.props.placeholder}
+              placeholder={placeholder}
               role='searchbox'
               type='text'
               value={typeAheadDisplay}
@@ -524,8 +526,8 @@ class SelectInput extends React.Component {
               }}
               tabIndex={0}
             >
-              {this.props.placeholder && !value ? (
-                <span className='u-grayed-out'>{this.props.placeholder}</span>
+              {placeholder && !value ? (
+                <span className='u-grayed-out'>{placeholder}</span>
               ) : (
                 displayValue
               )}

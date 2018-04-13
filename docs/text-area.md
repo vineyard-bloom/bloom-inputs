@@ -2,6 +2,31 @@
 
 TextArea is a multi-line text input for large amounts of text. Uses HTML5 `<textarea>`.
 
+### Examples
+#### General
+```
+  <TextArea
+    label='Comment'
+    name='comment'
+    onChange={(e) => this.props.updateComment(e.target.value)}
+    value={this.props.comment.value}
+  />
+```
+
+#### Bloom-Forms use
+```
+  const { checkField, formData, updateField } = this.props
+
+  <TextArea
+    formData={formData}
+    label='Comment'
+    name='comment'
+    onBlur={checkField}
+    onChange={updateField}
+    validateAs='max-120-chars'
+  />
+```
+
 ### Required Props
 - `label`:
   Either a string or a React element that labels the `TextArea`. Required for accessibility purposes, but hidden by default.

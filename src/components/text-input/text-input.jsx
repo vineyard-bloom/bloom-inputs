@@ -56,6 +56,9 @@ class TextInput extends React.Component {
       name,
       label,
       labelClass,
+      onBlur,
+      onChange,
+      onKeyDown,
       placeholder,
       showLabel,
       suppressErrors,
@@ -67,7 +70,7 @@ class TextInput extends React.Component {
       showLabel ? '' : ' u-sr-only'
     }`
 
-    let attr = {}
+    let attr = { ...props }
 
     if (props.required) {
       attr['aria-required'] = true
@@ -110,8 +113,8 @@ class TextInput extends React.Component {
           type={isPassword ? 'password' : 'text'}
           name={name}
           id={name}
-          onChange={props.onChange}
-          onKeyDown={props.onKeyDown}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
           disabled={disabled}
           className={`Input Input--text ${className ? className : ''} ${
             error ? 'Input--invalid' : ''

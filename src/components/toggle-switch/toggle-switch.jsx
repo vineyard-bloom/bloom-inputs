@@ -22,13 +22,14 @@ class ToggleSwitch extends React.Component {
       isActive,
       labelText,
       name,
+      onBlur,
       onClick,
+      onFocus,
       required,
       showLabel,
-      onFocus,
       ...props
     } = this.props
-    let attr = {}
+    let attr = { ...props }
 
     if (required) {
       attr['required'] = true

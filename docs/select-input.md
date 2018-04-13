@@ -1,5 +1,100 @@
 # SelectInput
 
+A `<select>` input that's fully accessible and fully-stylable. This is the most customized component in bloom-inputs, as styling a native `<select>` across browsers, including its `<options>` is extremely limited.
+
+### Examples
+#### General
+```
+  const options = [
+    {
+      label: '0 - 18',
+      value: 'range1'
+    },
+    {
+      label: '19 - 29',
+      value: 'range2'
+    },
+    {
+      label: '30 - 39',
+      value: 'range3'
+    },
+    {
+      label: '40 - 49',
+      value: 'range4'
+    },
+    {
+      label: '50 - 59',
+      value: 'range5'
+    },
+    {
+      label: '60 - 69',
+      value: 'range6'
+    },
+    {
+      label: '70 +',
+      value: 'range7'
+    }
+  ]
+
+  ...
+
+  <SelectInput
+    formId={this.props.formId}
+    name='ageRange'
+    onChange={(formId=this.props.formId, fieldName='ageRange', value) => this.props.updateAgeRange(formId, fieldName, value)}
+    options={options}
+    value={this.props.ageRange.value}
+  />
+```
+
+#### Bloom-Forms use
+```
+  const { checkField, formData, formId, manualFieldUpdate } = this.props
+  const options = [
+    {
+      label: '0 - 18',
+      value: 'range1'
+    },
+    {
+      label: '19 - 29',
+      value: 'range2'
+    },
+    {
+      label: '30 - 39',
+      value: 'range3'
+    },
+    {
+      label: '40 - 49',
+      value: 'range4'
+    },
+    {
+      label: '50 - 59',
+      value: 'range5'
+    },
+    {
+      label: '60 - 69',
+      value: 'range6'
+    },
+    {
+      label: '70 +',
+      value: 'range7'
+    }
+  ]
+
+  ...
+
+  <SelectInput
+    formData={formData}
+    formId={formId}
+    name='ageRange'
+    onBlur={checkField}
+    onChange={manualFieldUpdate}
+    options={options}
+    required
+    validateAs='not-empty'
+  />
+```
+
 ### Required Props
 - `formId`:
   A string that matches the id passed into your wrapper `<Form>`.
