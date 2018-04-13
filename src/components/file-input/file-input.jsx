@@ -22,7 +22,7 @@ class FileInput extends React.Component {
     error: PropTypes.string,
     formId: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     multiple: PropTypes.bool,
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
@@ -63,12 +63,12 @@ class FileInput extends React.Component {
 
     // 13 is 'enter' key
     if (keyCode === 13) {
-      document.getElementById(this.props.id).click()
+      document.getElementById(this.props.id || this.props.name).click()
     }
   }
 
   triggerInput = e => {
-    const input = document.getElementById(this.props.id)
+    const input = document.getElementById(this.props.id || this.props.name)
     if (e.target.getAttribute('type') === 'file') {
       return
     }
@@ -149,10 +149,11 @@ class FileInput extends React.Component {
       multiple,
       name,
       required,
-      suppressErrors
+      suppressErrors,
+      ...props
     } = this.props
     let requiredString = ''
-    let attr = {}
+    let attr = { ...props }
 
     if (required) {
       requiredString = (

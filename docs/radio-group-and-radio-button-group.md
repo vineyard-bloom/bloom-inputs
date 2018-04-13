@@ -2,14 +2,80 @@
 and
 # Radio Button Group
 
-Both RadioGroup and RadioButtonGroup are used when there are a variety of options, but only one can be selected at once.
+Both RadioGroup and RadioButtonGroup are used when there are a variety of options to choose from, but only one can be selected at once.
 RadioButtonGroup behaves nearly identically to RadioGroup but has the styling of buttons.
+
+### Examples
+#### General use
+```
+  const options = [
+    {
+      id: 'x-small',
+      label: 'XS'
+    },
+    {
+      id: 'small',
+      label: 'S'
+    },
+    {
+      id: 'medium',
+      label: 'M'
+    },
+    {
+      id: 'large',
+      label: 'L'
+    }
+  ]
+
+  ...
+
+  <RadioGroup // (or RadioButtonGroup)
+    name='size'
+    onChange={(e) => this.props.updateSize(e.target.id)}
+    options={options}
+    value={this.props.size.value}
+  />
+```
+
+#### Bloom-Forms use
+```
+  const { checkField, formData, updateField } = this.props
+  const options = [
+    {
+      id: 'x-small',
+      label: 'XS'
+    },
+    {
+      id: 'small',
+      label: 'S'
+    },
+    {
+      id: 'medium',
+      label: 'M'
+    },
+    {
+      id: 'large',
+      label: 'L'
+    }
+  ]
+
+  ...
+
+  <RadioGroup // (or RadioButtonGroup)
+    formData={formData}
+    name='size'
+    onBlur={checkField}
+    onChange={updateField}
+    options={options}
+    validateAs='not-empty'
+  />
+```
 
 ### Required Props
 - `name`:
   A string tying the `RadioGroup`'s value to the `formData`. Also sets the `name` prop of each element in the group.
 - `onChange`:
-  A function used to update the `RadioGroup`'s value. Generally, this should be `updateForm`.
+  A function used to update the `RadioGroup`'s value. If using bloom-forms, this should be `updateForm`.
 - `options`:
   An array of radio options, with each one looking like:
 ```
@@ -18,8 +84,9 @@ RadioButtonGroup behaves nearly identically to RadioGroup but has the styling of
     label: either a string or a react element
   }
 ```
-- `value`:
-  A string mapped to the `RadioGroup`'s value in `formData`.
+- Either `value` or `formData`:
+  value: A string mapped to the `RadioGroup`'s value in `formData`.
+  formData: The object holding all keys mapped to fields in your form. See [bloom-forms' formData prop](https://github.com/vineyard-bloom/bloom-forms/blob/master/docs/children-props.md). If you use formData via bloom-forms, the value will be derived from it, and any errors on that field will be passed in for you too.
 
 ### Optional Props
 - `className`:

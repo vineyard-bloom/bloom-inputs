@@ -56,6 +56,8 @@ class CurrencyInput extends React.Component {
       id,
       label,
       labelClass,
+      maximumValue,
+      minimumValue,
       name,
       onBlur,
       onChange,
@@ -70,7 +72,7 @@ class CurrencyInput extends React.Component {
       labelClass ? labelClass : ''
     } ${showLabel ? '' : 'u-sr-only'}`
 
-    const attr = {}
+    const attr = { ...props }
 
     if (props.required) {
       attr['aria-required'] = true
@@ -119,8 +121,8 @@ class CurrencyInput extends React.Component {
           data-validate={validateAs || 'number'}
           disabled={disabled}
           id={id || name}
-          min={props.minimumValue}
-          max={props.maximumValue}
+          min={minimumValue}
+          max={maximumValue}
           maxLength='150'
           name={name}
           onChange={onChange}

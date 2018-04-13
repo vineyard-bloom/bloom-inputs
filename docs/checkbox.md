@@ -33,10 +33,11 @@ The checked background image of the Checkbox can be styled via `.Input--checked-
 ```
 
 ### Required Props
-- `checked`:
-  A boolean for if the element is checked or not. Usually populated like `formData.field.value`.
+- Either `checked` or `formData`:
+  checked: A boolean for if the element is checked or not. Usually populated like `formData.field.value`.
+  formData: The object holding all keys mapped to fields in your form. See [bloom-forms' formData prop](https://github.com/vineyard-bloom/bloom-forms/blob/master/docs/children-props.md). If you use formData via bloom-forms, `checked` will be derived from it, and any errors on that field will be passed in for you too.
 - `name`:
-  A string that should match one of the string in `fieldNames` passed into `<Form>`. Also used as the checkbox's ID.
+  A string for the component's name and id. When using bloom-forms, name ties the `formData` to the input's value. It should match one of the strings in `fieldNames` array passed into `<Form>`.
 - `label`:
   Either a string or an element to label the checkbox. Hidden by default, but always required for accessibility purposes.
 - `onChange`:

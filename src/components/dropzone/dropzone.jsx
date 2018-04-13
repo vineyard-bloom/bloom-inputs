@@ -137,10 +137,11 @@ class MyDropzone extends React.Component {
       required,
       suppressErrors,
       validateAs,
-      value
+      value,
+      props
     } = this.props
     let requiredString = ''
-    let attr = {}
+    let attr = { ...props }
 
     if (required) {
       requiredString = (
@@ -259,6 +260,7 @@ class MyDropzone extends React.Component {
             onChange={this.onDrop}
             multiple={multiple}
             accept={accept}
+            {...attr}
           />
         </div>
         <button

@@ -52,6 +52,8 @@ class DateInput extends React.Component {
       name,
       label,
       labelClass,
+      onChange,
+      onKeyDown,
       placeholder,
       showLabel,
       suppressErrors,
@@ -63,7 +65,7 @@ class DateInput extends React.Component {
       showLabel ? '' : ' u-sr-only'
     }`
 
-    let attr = {}
+    let attr = { ...props }
 
     if (props.required) {
       attr['aria-required'] = true
@@ -82,7 +84,7 @@ class DateInput extends React.Component {
       attr.value = value
     }
 
-    if (!props.onChange) {
+    if (!onChange) {
       attr.readOnly = true
     }
 
@@ -109,8 +111,8 @@ class DateInput extends React.Component {
           data-validate={validateAs}
           id={name}
           name={name}
-          onChange={props.onChange}
-          onKeyDown={props.onKeyDown}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
           placeholder={placeholder}
           type='date'
           {...attr}

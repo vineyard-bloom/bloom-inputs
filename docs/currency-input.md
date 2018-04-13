@@ -2,6 +2,8 @@
 
 CurrencyInput is a special TextInput that always validates as a number and displays the type of currency in the background of the input.
 
+You can pass in any props outside of those listed below, but they must be HTML5 attributes.
+
 ### Examples:
 #### General:
 ```
@@ -38,11 +40,11 @@ CurrencyInput is a special TextInput that always validates as a number and displ
 - `label`:
   Either a string or a React element that labels the `CurrencyInput`. Required for accessibility purposes, but hidden by default.
 - `name`:
-  A string tying the `formData` to the input's value. It should match one of the strings in `fieldNames` array passed into `<Form>`.
+  A string for the component's name and id. When using bloom-forms, name ties the `formData` to the input's value. It should match one of the strings in `fieldNames` array passed into `<Form>`.
 - `onChange`:
   A function used to update the `CurrencyInput`'s value. Generally, this should be `updateForm`.
 - Either `formData` or `value`:
-    formData: The object holding all keys mapped to fields in your form. See [bloom-forms' formData prop](https://github.com/vineyard-bloom/bloom-forms/blob/master/docs/children-props.md).
+    formData: The object holding all keys mapped to fields in your form. See [bloom-forms' formData prop](https://github.com/vineyard-bloom/bloom-forms/blob/master/docs/children-props.md). If you use formData via bloom-forms, the value will be derived from it, and any errors on that field will be passed in for you too.
     value: A string holding the value of the `CurrencyInput`. Generally passed in like `formData.field.value`.
 
 ### Optional Props
