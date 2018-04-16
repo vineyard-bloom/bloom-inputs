@@ -6,11 +6,6 @@ import testConfigure from './helpers/configure-test'
 
 testConfigure()
 
-// import Checkbox from '../src/components/checkbox'
-// import CurrencyInput from '../src/components/currency-input'
-// import DateInput from '../src/components/date-input'
-// import Dropzone from '../src/components/dropzone'
-// import FileInput from '../src/components/file-input'
 import Loading from '../src/components/loading'
 import {
   Checkbox,
@@ -24,11 +19,6 @@ import {
   TextInput,
   ToggleSwitch
 } from '../src'
-// import RadioGroup from '../src/components/radio-group'
-// import RadioButtonGroup from '../src/components/radio-button-group'
-// import TextArea from '../src/components/text-area'
-// import TextInput from '../src/components/text-input'
-// import ToggleSwitch from '../src/components/toggle-switch'
 
 const exampleFormData = {
   checkbox: { value: '' },
