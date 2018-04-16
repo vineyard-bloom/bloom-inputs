@@ -144,6 +144,8 @@ class FileInput extends React.Component {
       clearable,
       containerClass,
       error,
+      formData,
+      formId,
       id,
       label,
       multiple,
@@ -163,6 +165,16 @@ class FileInput extends React.Component {
       )
       attr['required'] = true
       attr['aria-required'] = 'true'
+    }
+
+    let err = error
+    if (
+      Object.keys(this.props).indexOf('files') === -1 &&
+      formData &&
+      Object.keys(formData).indexOf(name) > -1
+    ) {
+      attr.files = formData[name].value
+      err = formData[name].error
     }
 
     const allowClear = clearable && !!this.state.fileText
@@ -193,9 +205,9 @@ class FileInput extends React.Component {
             </div>
           )}
         </div>
-        {error &&
+        {err &&
           !this.state.focused &&
-          !suppressErrors && <ErrorTip contents={error} />}
+          !suppressErrors && <ErrorTip contents={err} />}
         <input
           name={name}
           id={id || name}

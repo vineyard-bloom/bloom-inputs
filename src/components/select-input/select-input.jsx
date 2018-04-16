@@ -385,6 +385,7 @@ class SelectInput extends React.Component {
       containerClass,
       error,
       formData,
+      formId,
       name,
       label,
       loading,
