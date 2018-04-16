@@ -10,7 +10,8 @@
     "prettify": "node ./scripts/cross-os-prettier.js",
     "prettify-staged": "prettier --config .prettierrc --write",
     "pre-commit": "npm run build && git add index.js && lint-staged",
-    "test": ""
+    "test": "npm run test-select && ./node_modules/.bin/mocha --compilers js:babel-core/register tests/helpers/virtual-dom.js tests/inputs-test.js  --require ignore-styles",
+    "test-select": "./node_modules/.bin/mocha --compilers js:babel-core/register tests/helpers/virtual-dom.js tests/select-input-test  --require ignore-styles"
   },
   "repository": {
     "type": "git",
