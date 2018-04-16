@@ -132,7 +132,7 @@ class FileInput extends React.Component {
   }
 
   componentDidMount() {
-    const requiredProps = ['formId', 'label', 'id', 'name', 'onChange']
+    const requiredProps = ['formId', 'label', 'name', 'onChange']
     const recommendedProps = ['accept']
 
     requiredPropsLogger(this.props, requiredProps, recommendedProps)
