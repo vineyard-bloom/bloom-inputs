@@ -6,17 +6,16 @@ import testConfigure from './helpers/configure-test'
 
 testConfigure()
 
-import Button from '../src/inputs/button.jsx'
-import Checkbox from '../src/inputs/checkbox.jsx'
-import CurrencyInput from '../src/inputs/currency-input.jsx'
-import DateInput from '../src/inputs/date-input.jsx'
-import Dropzone from '../src/inputs/dropzone.jsx'
-import FileInput from '../src/inputs/file-input.jsx'
-import RadioGroup from '../src/inputs/radio-group.jsx'
-import RadioButtonGroup from '../src/inputs/radio-button-group.jsx'
-import TextArea from '../src/inputs/text-area.jsx'
-import TextInput from '../src/inputs/text-input.jsx'
-import ToggleSwitch from '../src/inputs/toggle-switch.jsx'
+import Checkbox from '../src/components/checkbox'
+import CurrencyInput from '../src/components/currency-input'
+import DateInput from '../src/components/date-input'
+import Dropzone from '../src/components/dropzone'
+import FileInput from '../src/components/file-input'
+import RadioGroup from '../src/components/radio-group'
+import RadioButtonGroup from '../src/components/radio-button-group'
+import TextArea from '../src/components/text-area'
+import TextInput from '../src/components/text-input'
+import ToggleSwitch from '../src/components/toggle-switch'
 
 const exampleFormData = {
   checkbox: { value: '' },
@@ -35,17 +34,6 @@ const exampleFormData = {
 function exampleClick() {
   return
 }
-
-describe('<Button />', () => {
-  it('renders without breaking', () => {
-    const exampleText = 'example button'
-    const button = Enzyme.mount(
-      <Button contents={exampleText} onClick={exampleClick} id='button-id' />
-    )
-
-    assert.ok(button.text().indexOf(exampleText) >= 0)
-  })
-})
 
 describe('<Checkbox />', () => {
   it('renders without breaking', () => {

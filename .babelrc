@@ -3,6 +3,17 @@
   'plugins': [
     'transform-runtime',
     'transform-object-rest-spread',
-    'transform-class-properties'
+    'transform-class-properties',
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "components": "./src/components",
+          "styles": "./src/styles",
+          "util": "./src/util"
+        }
+      }
+    ]
   ]
 }

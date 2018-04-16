@@ -4,7 +4,7 @@ import * as assert from 'assert'
 import Enzyme from 'enzyme'
 
 import testConfigure from './helpers/configure-test'
-import SelectInput from '../src/inputs/select-input.jsx'
+import SelectInput from '../src/components/select-input'
 
 // test against values with numbers too
 
