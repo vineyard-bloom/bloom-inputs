@@ -11,13 +11,13 @@ testConfigure()
 // import DateInput from '../src/components/date-input'
 // import Dropzone from '../src/components/dropzone'
 // import FileInput from '../src/components/file-input'
+import Loading from '../src/components/loading'
 import {
   Checkbox,
   CurrencyInput,
   DateInput,
   Dropzone,
   FileInput,
-  Loading,
   RadioGroup,
   RadioButtonGroup,
   TextArea,
