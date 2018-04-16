@@ -61,6 +61,7 @@ describe('<CurrencyInput />', () => {
         name='currency-input'
         id='currency-input'
         maximumValue={100}
+        onChange={() => ''}
         value='50'
         formData={exampleFormData}
       />
@@ -108,6 +109,7 @@ describe('<FileInput />', () => {
     const exampleLabel = 'Example File Input'
     const file = Enzyme.mount(
       <FileInput
+        accept='.jpg'
         label={exampleLabel}
         name='file-input'
         formId='example-form'
