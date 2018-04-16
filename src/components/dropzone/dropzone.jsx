@@ -240,7 +240,7 @@ class MyDropzone extends React.Component {
             ) : (
               <span>
                 <p className='u-text-center'>
-                  Drag image or click here to select
+                  Drag file or click here to select
                   {this.state.loading &&
                     (loadingElement ? loadingElement : 'Loading...')}
                 </p>
