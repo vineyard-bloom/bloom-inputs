@@ -1,3 +1,4 @@
+import Button from './components/button'
 import Checkbox from './components/checkbox'
 import CurrencyInput from './components/currency-input'
 import DateInput from './components/date-input'
@@ -12,6 +13,7 @@ import TextInput from './components/text-input'
 import ToggleSwitch from './components/toggle-switch'
 
 export {
+  Button,
   Checkbox,
   CurrencyInput,
   DateInput,
