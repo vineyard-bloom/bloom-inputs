@@ -1,6 +1,6 @@
 {
   "name": "bloom-inputs",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "accessible inputs used in bloom packages",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,9 @@
     "lint-staged": "./node_modules/.bin/eslint --config .eslintrc --fix --ignore-path .eslintignore",
     "prettify": "node ./scripts/cross-os-prettier.js",
     "prettify-staged": "prettier --config .prettierrc --write",
-    "pre-commit": "npm run build && git add index.js && lint-staged",
-    "test": ""
+    "pre-commit": "npm run test && npm run build && git add index.js && lint-staged",
+    "test": "npm run test-select && ./node_modules/.bin/mocha --compilers js:babel-core/register tests/helpers/virtual-dom.js tests/inputs-test.js  --require ignore-styles",
+    "test-select": "./node_modules/.bin/mocha --compilers js:babel-core/register tests/helpers/virtual-dom.js tests/select-input-test  --require ignore-styles"
   },
   "repository": {
     "type": "git",
@@ -34,10 +35,10 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build && npm run pre-commit"
+      "pre-commit": "npm run pre-commit"
     }
   },
-  "author": "inkblotty (http://inkblotty.github.io)",
+  "author": "vineyard-bloom (https://www.npmjs.com/org/vineyard-bloom)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vineyard-bloom/bloom-layout/issues"
@@ -48,6 +49,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
+    "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",

@@ -1,6 +1,9 @@
-./node_modules/*
-./public/*
-./dist/*
-./scripts/*
+node_modules/*
+public/*
+dist/*
+scripts/*
+example/dist/*
+example/node_modules/*
+example/webpack.config.js
 webpack.config.js
 index.js

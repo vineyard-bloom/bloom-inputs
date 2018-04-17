@@ -1,12 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 
-import Example from 'components'
+import store from 'redux-store/store'
+import ExampleForm from 'components'
 
 class AppRoot extends React.Component {
   render() {
     return (
-      <Example />
+      <Provider store={store}>
+        <ExampleForm />
+      </Provider>
     )
   }
 }

@@ -35,8 +35,7 @@ const baseConfig = {
         test: /\.(png|jpe?g|gif|eot|ttf|woff|woff2|svg)$/,
         loader: 'url-loader',
         include: [
-          BLOOM_DIR,
-          APP_DIR
+          BLOOM_DIR
         ],
         options: {
           limit: 10000
@@ -52,11 +51,7 @@ const baseConfig = {
             'transform-object-rest-spread',
             'transform-class-properties'
           ]
-        },
-        include: [
-          BLOOM_DIR,
-          APP_DIR
-        ]
+        }
       },
       {
         test: /\.s?css$/,
@@ -70,17 +65,9 @@ const baseConfig = {
               }
             }
           },
-          {
-            loader: 'sass-loader',
-            options: {
-              include: [BLOOM_DIR, APP_DIR]
-            }
-           }
+          { loader: 'sass-loader' }
         ],
-        include: [
-          BLOOM_DIR,
-          APP_DIR
-        ]
+        include: [BLOOM_DIR]
       }
     ]
   },
@@ -94,9 +81,12 @@ const baseConfig = {
 
   resolve: {
     alias: {
-      'bloom-layout': BLOOM_DIR,
+      'bloom-inputs': BLOOM_DIR,
       components:   path.resolve(__dirname, 'src/components'),
-      styles:       path.resolve(BLOOM_DIR, 'styles')
+      images:       path.resolve(__dirname, 'src/images'),
+      'redux-store':path.resolve(__dirname, 'src/redux-store'),
+      styles:       path.resolve(BLOOM_DIR, 'styles'),
+      util:         path.resolve(BLOOM_DIR, 'util')
     },
     extensions: ['.jsx', '.js', '.html', '.scss']
   }

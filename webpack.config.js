@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: BUILD_DIR,
-    library: 'bloom-layout',
+    library: 'bloom-inputs',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -75,6 +75,7 @@ module.exports = {
   resolve: {
     alias: {
       styles: path.resolve(__dirname, 'src/styles'),
+      util: path.resolve(__dirname, 'src/util')
     },
     extensions: ['.webpack.js', '.web.js', '.jsx', '.js', '.html', '.scss']
   }
