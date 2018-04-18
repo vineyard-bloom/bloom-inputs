@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ErrorTip from '../error-tip'
-import { requiredPropsLogger } from 'util/required-props-logger'
-import 'styles/inputs.scss'
+import { requiredPropsLogger } from '../../util/required-props-logger'
+import '../../styles/inputs.scss'
 
 class FileInput extends React.Component {
   state = {

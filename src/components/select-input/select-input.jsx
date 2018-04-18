@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import ErrorTip from '../error-tip'
 import Loading from '../loading'
-import { requiredPropsLogger } from 'util/required-props-logger'
-import 'styles/inputs.scss'
+import { requiredPropsLogger } from '../../util/required-props-logger'
+import '../../styles/inputs.scss'
 import './select-input.scss'
 
 /* SUPPORTS:

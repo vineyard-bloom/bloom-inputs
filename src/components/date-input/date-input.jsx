@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ErrorTip from '../error-tip'
-import { requiredPropsLogger } from 'util/required-props-logger'
+import { requiredPropsLogger } from '../../util/required-props-logger'
 
 /* just the basic input[type='date'] -- no customized dropdown styles or anything */
 class DateInput extends React.Component {

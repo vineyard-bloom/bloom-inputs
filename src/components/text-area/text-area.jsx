@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ErrorTip from '../error-tip'
-import { requiredPropsLogger } from 'util/required-props-logger'
+import { requiredPropsLogger } from '../../util/required-props-logger'
 
-import 'styles/inputs.scss'
+import '../../styles/inputs.scss'
 
 class TextArea extends React.Component {
   state = {

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { requiredPropsLogger } from 'util/required-props-logger'
+import { requiredPropsLogger } from '../../util/required-props-logger'
 
-import 'styles/inputs.scss'
+import '../../styles/inputs.scss'
 import './toggle-switch.scss'
 
 class ToggleSwitch extends React.Component {

@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { requiredPropsLogger } from 'util/required-props-logger'
-import './dropzone'
+import { requiredPropsLogger } from '../../util/required-props-logger'
+import '../../styles/inputs.scss'
+import './dropzone.scss'
 import docImage from './file.svg'
 import ErrorTip from '../error-tip'
 
