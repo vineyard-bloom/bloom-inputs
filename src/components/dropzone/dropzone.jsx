@@ -258,6 +258,7 @@ class MyDropzone extends React.Component {
             className='u-sr-only'
             data-validate={validateAs}
             id={name}
+            name={name}
             onChange={this.onDrop}
             multiple={multiple}
             accept={accept}
