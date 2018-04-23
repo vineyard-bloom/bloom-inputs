@@ -14,6 +14,21 @@ import {
   ToggleSwitch
 } from 'bloom-inputs'
 
+let selectOptions = [
+  { label: 'Muffins', value: 'muffins' },
+  { label: 'Cookies', value: 'cookies' },
+  { label: 'Cakes', value: 'birthday cakes' }
+]
+
+setTimeout(() => {
+  console.log('updating select opts')
+  selectOptions = [
+    { label: 'Muffins', value: 'muffins' },
+    { label: 'Cookies', value: 'cookies' },
+    { label: 'Birthday Cakes', value: 'birthday cakes' }
+  ]
+}, 3000)
+
 const ExampleForm = props => {
   // I am a reference form
   const formData = props.formData || {
@@ -37,11 +52,6 @@ const ExampleForm = props => {
     { label: 'RadioButton 1', id: 'radio-button-1' },
     { label: 'RadioButton 2', id: 'radio-button-2' },
     { label: 'RadioButton 3', id: 'radio-button-3' }
-  ]
-  const selectOptions = [
-    { label: 'Muffins', value: 'muffins' },
-    { label: 'Cookies', value: 'cookies' },
-    { label: 'Cakes', value: 'birthday cakes' }
   ]
 
   const toggleClick = e => {
