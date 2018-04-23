@@ -21,7 +21,6 @@ let selectOptions = [
 ]
 
 setTimeout(() => {
-  console.log('updating select opts')
   selectOptions = [
     { label: 'Muffins', value: 'muffins' },
     { label: 'Cookies', value: 'cookies' },
