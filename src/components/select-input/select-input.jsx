@@ -323,10 +323,20 @@ class SelectInput extends React.Component {
   }
 
   componentWillReceiveProps = newProps => {
+    const newOptLabels = newProps.options.map(opt => opt.label.toString())
+    const oldOptLabels = this.props.options.map(opt => opt.label.toString())
+
     if (newProps.options.length != this.props.options.length) {
       this.setState({
         sortBy: null,
-        sortedOpts: this.props.options
+        sortedOpts: newProps.options
+      })
+    } else if (
+      newOptLabels.sort().toString() !== oldOptLabels.sort().toString()
+    ) {
+      this.setState({
+        sortBy: null,
+        sortedOpts: newProps.options
       })
     }
   }
