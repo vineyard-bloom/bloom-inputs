@@ -334,9 +334,14 @@ class SelectInput extends React.Component {
     } else if (
       newOptLabels.sort().toString() !== oldOptLabels.sort().toString()
     ) {
+      const sortedOpts = this.state.sortBy
+        ? newProps.options.filter(opt =>
+            compareLetters(this.state.sortBy, opt.label ? opt.label : opt)
+          )
+        : newProps.options
+
       this.setState({
-        sortBy: null,
-        sortedOpts: newProps.options
+        sortedOpts
       })
     }
   }
