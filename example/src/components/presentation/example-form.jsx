@@ -20,13 +20,13 @@ let selectOptions = [
   { label: 'Cakes', value: 'birthday cakes' }
 ]
 
-setTimeout(() => {
-  selectOptions = [
-    { label: 'Muffins', value: 'muffins' },
-    { label: 'Cookies', value: 'cookies' },
-    { label: 'Birthday Cakes', value: 'birthday cakes' }
-  ]
-}, 3000)
+function updateOptions(value) {
+  selectOptions = selectOptions.map(opt => {
+    return opt.value === value
+      ? { ...opt, label: `${opt.label}!` }
+      : { ...opt, label: opt.label.replace(/!/g, '') }
+  })
+}
 
 const ExampleForm = props => {
   // I am a reference form
@@ -198,7 +198,16 @@ const ExampleForm = props => {
               ? formData.select2.value
               : ''
           }
-          onChange={props.manualFieldUpdate}
+          onChange={(
+            formId = this.props.formId,
+            name,
+            value,
+            type = 'text'
+          ) => {
+            console.log(formId, name, value, type)
+            props.manualFieldUpdate(formId, name, value, type)
+            updateOptions(value)
+          }}
           showLabel
           label='Select Input -- No TypeAhead'
           error={
