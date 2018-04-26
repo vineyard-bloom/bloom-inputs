@@ -295,13 +295,13 @@ describe('<SelectInput />', () => {
         'input-select-typeahead-placeholder-a'
       )
     })
-    it('arrow up when the options are visible goes to the prevous option (typeahead)', () => {
+    it('arrow up when the options are visible goes to the previous option (typeahead), skipping currently selected', () => {
       // continue the previous test
       typeaheadSelectWrapper.simulate('keyDown', { keyCode: 38 })
       typeaheadSelectWrapper.update()
       assert.equal(
         document.activeElement.id,
-        'input-select-typeahead-placeholder-c'
+        'input-select-typeahead-placeholder-b'
       )
     })
 
@@ -398,13 +398,14 @@ describe('<SelectInput />', () => {
         'input-select-button-placeholder-a'
       )
     })
-    it('arrow up when the options are visible goes to the prevous option (button)', () => {
+    it('arrow up when the options are visible goes to the prevous option (button), skipping currently selected', () => {
       // continue the previous test
+      assert.equal(value, 'a') // should skip currently selected
       buttonSelectWrapper.simulate('keyDown', { keyCode: 38 })
       buttonSelectWrapper.update()
       assert.equal(
         document.activeElement.id,
-        'input-select-button-placeholder-c'
+        'input-select-button-placeholder-b'
       )
     })
   })

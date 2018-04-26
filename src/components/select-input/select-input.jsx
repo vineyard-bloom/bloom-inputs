@@ -135,11 +135,11 @@ class SelectInput extends React.Component {
     const key = e.which || e.keyCode
     const currValue = this.state.focusedOption || null
     const options = this.state.sortedOpts.filter(opt => {
+      let temp = opt.value ? opt.value : opt
       if (this.props.multiple) {
-        let temp = opt.value ? opt.value : opt
         return this.props.value.indexOf(temp) === -1
       } else {
-        return true
+        return this.props.value !== temp
       }
     })
 
