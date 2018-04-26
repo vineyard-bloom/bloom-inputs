@@ -154,7 +154,7 @@ const ExampleForm = props => {
       <CurrencyInput
         label='Currency Input'
         showLabel
-        isRequired
+        required
         coinIcon={
           <img src='http://www.freeiconspng.com/uploads/bitcoin-coin-currency-digital-currency-digital-walet-money-icon-30.png' />
         }
