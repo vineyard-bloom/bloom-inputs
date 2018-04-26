@@ -263,7 +263,9 @@ class SelectInput extends React.Component {
 
     if (
       e &&
-      (e.relatedTarget && !this.isInsideTheSelectPlaceholder(e.relatedTarget))
+      ((e.relatedTarget &&
+        !this.isInsideTheSelectPlaceholder(e.relatedTarget)) ||
+        !e.relatedTarget)
     ) {
       this.setState({
         focusedOption: null,
@@ -397,6 +399,7 @@ class SelectInput extends React.Component {
 
   render() {
     const {
+      clearable,
       containerClass,
       error,
       formData,
@@ -469,7 +472,10 @@ class SelectInput extends React.Component {
     }
 
     if (multiple) {
-      activeOptLabel = activeOptLabel.join(', ')
+      activeOptLabel =
+        activeOptLabel && Array.isArray(activeOptLabel)
+          ? activeOptLabel.join(', ')
+          : activeOptLabel || ''
     }
 
     const typeAheadDisplay = this.state.sortBy
@@ -576,6 +582,20 @@ class SelectInput extends React.Component {
       </div>
     )
 
+    const clearButton = clearable ? (
+      <button
+        aria-label='Clear this Input'
+        className='SelectInput-clearButton'
+        disabled={!attr.value}
+        onClick={e => {
+          e.preventDefault()
+          this.selectOpt('')
+        }}
+      />
+    ) : (
+      ''
+    )
+
     return (
       <div
         onBlur={this.onFocusOut}
@@ -610,12 +630,14 @@ class SelectInput extends React.Component {
             {opts}
           </select>
         </label>
+        {clearButton}
       </div>
     )
   }
 }
 
 SelectInput.propTypes = {
+  clearable: PropTypes.bool,
   containerClass: PropTypes.string,
   error: PropTypes.string,
   formData: PropTypes.object,

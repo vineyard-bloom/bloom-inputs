@@ -75,6 +75,22 @@ SELECT INPUT
   .Tooltip {
     top: 0;
   }
+
+  &-clearButton {
+    background-color: $white;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Grey_close_x.svg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    border: 1px solid $med-gray;
+    border-radius: $border-radius;
+    box-sizing: border-box;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 25px;
+    position: absolute;
+    width: 30px;
+  }
 }
 
 .SelectInput-opts {

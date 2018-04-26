@@ -63,7 +63,12 @@ const ExampleForm = props => {
   }
 
   return (
-    <form id='example-form' className='Form AuthForm' noValidate>
+    <form
+      id='example-form'
+      className='Form AuthForm'
+      noValidate
+      style={{ padding: '0 50px' }}
+    >
       <h3 className='AuthForm-header'>Example Form</h3>
       <TextInput
         id='textinput'
@@ -163,7 +168,7 @@ const ExampleForm = props => {
             : '0'
         }
       />
-      <div style={{ zIndex: 5 }}>
+      <div style={{ zIndex: 7 }}>
         {/* notice the z-indices to help make sure select inputs overlap properly */}
         <SelectInput
           options={selectOptions}
@@ -187,7 +192,7 @@ const ExampleForm = props => {
           }
         />
       </div>
-      <div style={{ zIndex: 4 }}>
+      <div style={{ zIndex: 6 }}>
         <SelectInput
           options={selectOptions}
           name='select2'
@@ -213,6 +218,50 @@ const ExampleForm = props => {
           error={
             formData.select2 && formData.select2.error
               ? formData.select2.error
+              : ''
+          }
+        />
+      </div>
+      <div style={{ zIndex: 5 }}>
+        <SelectInput
+          error={
+            formData.select4 && formData.select4.error
+              ? formData.select4.error
+              : ''
+          }
+          formId='example-form'
+          label='Select Input -- Multiple'
+          multiple
+          name='select4'
+          onChange={props.manualFieldUpdate}
+          options={selectOptions}
+          showLabel
+          typeAhead={false}
+          value={
+            formData.select4 && formData.select4.value
+              ? formData.select4.value
+              : ''
+          }
+        />
+      </div>
+      <div style={{ zIndex: 4 }}>
+        <SelectInput
+          options={selectOptions}
+          clearable
+          name='select3'
+          formId='example-form'
+          typeAhead={false}
+          value={
+            formData.select3 && formData.select3.value
+              ? formData.select3.value
+              : ''
+          }
+          onChange={props.manualFieldUpdate}
+          showLabel
+          label='Select Input -- Clearable'
+          error={
+            formData.select3 && formData.select3.error
+              ? formData.select3.error
               : ''
           }
         />
