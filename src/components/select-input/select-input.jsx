@@ -143,13 +143,6 @@ class SelectInput extends React.Component {
       }
     })
 
-    if (!options.length) {
-      this.setState({
-        showList: true
-      })
-      return
-    }
-
     // close if esc key
     if (key === 27) {
       const typeaheadId = `${this.props.name}-placeholder`
@@ -163,6 +156,13 @@ class SelectInput extends React.Component {
         sortedOpts: this.props.options
       })
     } else if (key === 40 || key === 38) {
+      if (!options.length) {
+        this.setState({
+          showList: true
+        })
+        return
+      }
+
       // arrow keys
       e.preventDefault()
       let nextValue = currValue
