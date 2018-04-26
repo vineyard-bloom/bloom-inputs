@@ -397,6 +397,7 @@ class SelectInput extends React.Component {
 
   render() {
     const {
+      clearable,
       containerClass,
       error,
       formData,
@@ -571,6 +572,20 @@ class SelectInput extends React.Component {
       </div>
     )
 
+    const clearButton = clearable ? (
+      <button
+        aria-label='Clear this Input'
+        className='SelectInput-clearButton'
+        disabled={!attr.value}
+        onClick={e => {
+          e.preventDefault()
+          this.selectOpt('')
+        }}
+      />
+    ) : (
+      ''
+    )
+
     return (
       <div
         onBlur={this.onFocusOut}
@@ -605,12 +620,14 @@ class SelectInput extends React.Component {
             {opts}
           </select>
         </label>
+        {clearButton}
       </div>
     )
   }
 }
 
 SelectInput.propTypes = {
+  clearable: PropTypes.bool,
   containerClass: PropTypes.string,
   error: PropTypes.string,
   formData: PropTypes.object,
