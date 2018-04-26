@@ -143,6 +143,13 @@ class SelectInput extends React.Component {
       }
     })
 
+    if (!options.length) {
+      this.setState({
+        showList: true
+      })
+      return
+    }
+
     // close if esc key
     if (key === 27) {
       const typeaheadId = `${this.props.name}-placeholder`
