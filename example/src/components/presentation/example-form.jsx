@@ -209,7 +209,6 @@ const ExampleForm = props => {
             value,
             type = 'text'
           ) => {
-            console.log(formId, name, value, type)
             props.manualFieldUpdate(formId, name, value, type)
             updateOptions(value)
           }}
