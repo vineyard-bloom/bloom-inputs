@@ -67,7 +67,7 @@ const ExampleForm = props => {
       id='example-form'
       className='Form AuthForm'
       noValidate
-      style={{ padding: '0 50px' }}
+      style={{ margin: '0 auto', maxWidth: '900px', padding: '0 50px' }}
     >
       <h3 className='AuthForm-header'>Example Form</h3>
       <TextInput
@@ -221,6 +221,8 @@ const ExampleForm = props => {
           }
         />
       </div>
+      <br />
+      <br />
       <div style={{ zIndex: 5 }}>
         <SelectInput
           error={
@@ -235,7 +237,7 @@ const ExampleForm = props => {
           onChange={props.manualFieldUpdate}
           options={selectOptions}
           showLabel
-          typeAhead={false}
+          typeAhead={true}
           value={
             formData.select4 && formData.select4.value
               ? formData.select4.value
@@ -243,6 +245,8 @@ const ExampleForm = props => {
           }
         />
       </div>
+      <br />
+      <br />
       <div style={{ zIndex: 4 }}>
         <SelectInput
           options={selectOptions}

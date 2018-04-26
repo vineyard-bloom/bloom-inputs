@@ -64,7 +64,7 @@ class SelectInput extends React.Component {
         value = this.props.value
       }
     }
-    console.log(value)
+
     this.props.onChange(this.props.formId, this.props.name, value)
   }
 
@@ -134,7 +134,14 @@ class SelectInput extends React.Component {
   onKeyDown = e => {
     const key = e.which || e.keyCode
     const currValue = this.state.focusedOption || null
-    const options = this.state.sortedOpts
+    const options = this.state.sortedOpts.filter(opt => {
+      if (this.props.multiple) {
+        let temp = opt.value ? opt.value : opt
+        return this.props.value.indexOf(temp) === -1
+      } else {
+        return true
+      }
+    })
 
     // close if esc key
     if (key === 27) {
@@ -374,6 +381,19 @@ class SelectInput extends React.Component {
     requiredPropsLogger(this.props, requiredProps, [], true)
   }
 
+  removeOpt = (e, option) => {
+    if (e) {
+      e.preventDefault()
+    }
+
+    const index = this.props.value.indexOf(option)
+    const newValues = this.props.value
+      .slice(0, index)
+      .concat(this.props.value.slice(index + 1))
+
+    this.props.onChange(this.props.formId, this.props.name, newValues)
+  }
+
   renderPlaceholderOptions = sortedOpts => {
     const { multiple, name, value } = this.props
     return sortedOpts.map((opt, i) => {
@@ -388,7 +408,7 @@ class SelectInput extends React.Component {
             id={`input-${name}-placeholder-${opt.value
               .toString()
               .replace(/\s/g, '-')}`}
-            tabIndex={1}
+            tabIndex={isSelected ? -1 : 1}
             onClick={e => {
               e.preventDefault()
               this.selectOpt(opt.value)
@@ -405,7 +425,7 @@ class SelectInput extends React.Component {
             id={`input-${name}-placeholder-${opt
               .toString()
               .replace(/\s/g, '-')}`}
-            tabIndex={1}
+            tabIndex={isSelected ? -1 : 1}
             onClick={e => {
               e.preventDefault()
               this.selectOpt(opt)
@@ -483,23 +503,51 @@ class SelectInput extends React.Component {
       attr.readOnly = true
     }
 
+    const closableMultipleButtons = []
+
     // in case options' values are different from their labels
     let translateVal = options[0] && !!options[0].label
     let activeOptLabel
     if (translateVal && (value || value === 0 || value === false)) {
       if (multiple) {
-        activeOptLabel = []
+        activeOptLabel = ''
         options.forEach(opt => {
           if (value.indexOf(opt.value.toString()) > -1) {
-            activeOptLabel.push(opt.label)
+            closableMultipleButtons.push(
+              <button
+                className='SelectInput-removeMultipleButton'
+                aria-label='Click to remove this option'
+                onClick={e => this.removeOpt(e, opt.value)}
+              >
+                {opt.label}
+                <span className='SelectInput-removeMultipleButton-x' />
+              </button>
+            )
           }
         })
-        activeOptLabel = activeOptLabel ? activeOptLabel.join(', ') : 'Select'
       } else {
-        activeOptLabel = options.filter(
-          opt => opt.value.toString() === value.toString()
-        )[0]
-        activeOptLabel = activeOptLabel ? activeOptLabel.label : 'Select'
+        if (multiple) {
+          activeOptLabel = ''
+          options.forEach(opt => {
+            if (value.indexOf(opt.toString()) > -1) {
+              closableMultipleButtons.push(
+                <button
+                  className='SelectInput-removeMultipleButton'
+                  aria-label='Click to remove this option'
+                  onClick={e => this.removeOpt(e, opt)}
+                >
+                  {opt}
+                  <span className='SelectInput-removeMultipleButton-x' />
+                </button>
+              )
+            }
+          })
+        } else {
+          activeOptLabel = options.filter(
+            opt => opt.value.toString() === value.toString()
+          )[0]
+          activeOptLabel = activeOptLabel ? activeOptLabel.label : 'Select'
+        }
       }
     }
 
@@ -656,6 +704,7 @@ class SelectInput extends React.Component {
           </select>
         </label>
         {clearButton}
+        {closableMultipleButtons}
       </div>
     )
   }
