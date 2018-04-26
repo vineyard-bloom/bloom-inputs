@@ -49,7 +49,23 @@ class SelectInput extends React.Component {
       sortBy: null,
       sortedOpts: this.props.options
     })
-    this.props.onChange(this.props.formId, this.props.name, val)
+
+    let value = val
+
+    if (this.props.multiple) {
+      if (this.props.value.indexOf(value) === -1) {
+        value =
+          this.props.value && Array.isArray(this.props.value)
+            ? [...this.props.value, value.toString()]
+            : this.props.value
+              ? [this.props.value, value.toString()]
+              : [value.toString()]
+      } else {
+        value = this.props.value
+      }
+    }
+    console.log(value)
+    this.props.onChange(this.props.formId, this.props.name, value)
   }
 
   focusOnPlaceholderButton = e => {
@@ -359,11 +375,16 @@ class SelectInput extends React.Component {
   }
 
   renderPlaceholderOptions = sortedOpts => {
-    const { name } = this.props
+    const { multiple, name, value } = this.props
     return sortedOpts.map((opt, i) => {
+      const isSelected = multiple
+        ? value.indexOf((opt.value || opt).toString()) > -1
+        : (opt.value || opt).toString() === value.toString()
+
       return opt.label ? (
         <li key={`${name}-opt-${i}`} role='option'>
           <button
+            className={`SelectInput-opt ${isSelected ? 'is-selected' : ''}`}
             id={`input-${name}-placeholder-${opt.value
               .toString()
               .replace(/\s/g, '-')}`}
@@ -380,6 +401,7 @@ class SelectInput extends React.Component {
       ) : (
         <li key={`${name}-opt-${i}`} role='option'>
           <button
+            className={`SelectInput-opt ${isSelected ? 'is-selected' : ''}`}
             id={`input-${name}-placeholder-${opt
               .toString()
               .replace(/\s/g, '-')}`}
@@ -465,17 +487,20 @@ class SelectInput extends React.Component {
     let translateVal = options[0] && !!options[0].label
     let activeOptLabel
     if (translateVal && (value || value === 0 || value === false)) {
-      activeOptLabel = options.filter(
-        opt => opt.value.toString() === value.toString()
-      )[0]
-      activeOptLabel = activeOptLabel ? activeOptLabel.label : 'Select'
-    }
-
-    if (multiple) {
-      activeOptLabel =
-        activeOptLabel && Array.isArray(activeOptLabel)
-          ? activeOptLabel.join(', ')
-          : activeOptLabel || ''
+      if (multiple) {
+        activeOptLabel = []
+        options.forEach(opt => {
+          if (value.indexOf(opt.value.toString()) > -1) {
+            activeOptLabel.push(opt.label)
+          }
+        })
+        activeOptLabel = activeOptLabel ? activeOptLabel.join(', ') : 'Select'
+      } else {
+        activeOptLabel = options.filter(
+          opt => opt.value.toString() === value.toString()
+        )[0]
+        activeOptLabel = activeOptLabel ? activeOptLabel.label : 'Select'
+      }
     }
 
     const typeAheadDisplay = this.state.sortBy
