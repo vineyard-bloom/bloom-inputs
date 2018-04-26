@@ -404,6 +404,7 @@ class SelectInput extends React.Component {
       name,
       label,
       loading,
+      multiple,
       onBlur,
       onChange,
       options,
@@ -465,6 +466,10 @@ class SelectInput extends React.Component {
         opt => opt.value.toString() === value.toString()
       )[0]
       activeOptLabel = activeOptLabel ? activeOptLabel.label : 'Select'
+    }
+
+    if (multiple) {
+      activeOptLabel = activeOptLabel.join(', ')
     }
 
     const typeAheadDisplay = this.state.sortBy
@@ -618,6 +623,7 @@ SelectInput.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   loading: PropTypes.string,
+  multiple: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   onChange: PropTypes.func.isRequired,
