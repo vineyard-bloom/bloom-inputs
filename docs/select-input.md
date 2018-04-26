@@ -110,6 +110,8 @@ A `<select>` input that's fully accessible and fully-stylable. This is the most 
   Either a number or string holding the value of the `SelectInput`. Generally passed in like `formData.field.value`.
 
 ### Optional Props
+- `clearable`:
+  A boolean that renders an 'x' button next to the input to clear any value selected.
 - `containerClass`:
   A string to style the entire select input container. Shows up on `<label>` in the DOM.
 - `error`:
