@@ -32,6 +32,7 @@ class ExampleFormContainer extends React.Component {
       'select',
       'select2',
       'select3',
+      'select4',
       'toggle',
       'file-simple',
       'file-simple-2',

@@ -49,7 +49,23 @@ class SelectInput extends React.Component {
       sortBy: null,
       sortedOpts: this.props.options
     })
-    this.props.onChange(this.props.formId, this.props.name, val)
+
+    let value = val
+
+    if (this.props.multiple) {
+      if (this.props.value.indexOf(value) === -1) {
+        value =
+          this.props.value && Array.isArray(this.props.value)
+            ? [...this.props.value, value.toString()]
+            : this.props.value
+              ? [this.props.value, value.toString()]
+              : [value.toString()]
+      } else {
+        value = this.props.value
+      }
+    }
+
+    this.props.onChange(this.props.formId, this.props.name, value)
   }
 
   focusOnPlaceholderButton = e => {
@@ -118,7 +134,14 @@ class SelectInput extends React.Component {
   onKeyDown = e => {
     const key = e.which || e.keyCode
     const currValue = this.state.focusedOption || null
-    const options = this.state.sortedOpts
+    const options = this.state.sortedOpts.filter(opt => {
+      let temp = opt.value ? opt.value : opt
+      if (this.props.multiple) {
+        return this.props.value.indexOf(temp) === -1
+      } else {
+        return this.props.value !== temp
+      }
+    })
 
     // close if esc key
     if (key === 27) {
@@ -133,6 +156,13 @@ class SelectInput extends React.Component {
         sortedOpts: this.props.options
       })
     } else if (key === 40 || key === 38) {
+      if (!options.length) {
+        this.setState({
+          showList: true
+        })
+        return
+      }
+
       // arrow keys
       e.preventDefault()
       let nextValue = currValue
@@ -263,7 +293,9 @@ class SelectInput extends React.Component {
 
     if (
       e &&
-      (e.relatedTarget && !this.isInsideTheSelectPlaceholder(e.relatedTarget))
+      ((e.relatedTarget &&
+        !this.isInsideTheSelectPlaceholder(e.relatedTarget)) ||
+        !e.relatedTarget)
     ) {
       this.setState({
         focusedOption: null,
@@ -356,16 +388,34 @@ class SelectInput extends React.Component {
     requiredPropsLogger(this.props, requiredProps, [], true)
   }
 
+  removeOpt = (e, option) => {
+    if (e) {
+      e.preventDefault()
+    }
+
+    const index = this.props.value.indexOf(option)
+    const newValues = this.props.value
+      .slice(0, index)
+      .concat(this.props.value.slice(index + 1))
+
+    this.props.onChange(this.props.formId, this.props.name, newValues)
+  }
+
   renderPlaceholderOptions = sortedOpts => {
-    const { name } = this.props
+    const { multiple, name, value } = this.props
     return sortedOpts.map((opt, i) => {
+      const isSelected = multiple
+        ? value.indexOf((opt.value || opt).toString()) > -1
+        : (opt.value || opt).toString() === value.toString()
+
       return opt.label ? (
         <li key={`${name}-opt-${i}`} role='option'>
           <button
+            className={`SelectInput-opt ${isSelected ? 'is-selected' : ''}`}
             id={`input-${name}-placeholder-${opt.value
               .toString()
               .replace(/\s/g, '-')}`}
-            tabIndex={1}
+            tabIndex={isSelected ? -1 : 1}
             onClick={e => {
               e.preventDefault()
               this.selectOpt(opt.value)
@@ -378,10 +428,11 @@ class SelectInput extends React.Component {
       ) : (
         <li key={`${name}-opt-${i}`} role='option'>
           <button
+            className={`SelectInput-opt ${isSelected ? 'is-selected' : ''}`}
             id={`input-${name}-placeholder-${opt
               .toString()
               .replace(/\s/g, '-')}`}
-            tabIndex={1}
+            tabIndex={isSelected ? -1 : 1}
             onClick={e => {
               e.preventDefault()
               this.selectOpt(opt)
@@ -405,6 +456,7 @@ class SelectInput extends React.Component {
       name,
       label,
       loading,
+      multiple,
       onBlur,
       onChange,
       options,
@@ -458,14 +510,52 @@ class SelectInput extends React.Component {
       attr.readOnly = true
     }
 
+    const closableMultipleButtons = []
+
     // in case options' values are different from their labels
     let translateVal = options[0] && !!options[0].label
     let activeOptLabel
     if (translateVal && (value || value === 0 || value === false)) {
-      activeOptLabel = options.filter(
-        opt => opt.value.toString() === value.toString()
-      )[0]
-      activeOptLabel = activeOptLabel ? activeOptLabel.label : 'Select'
+      if (multiple) {
+        activeOptLabel = ''
+        options.forEach(opt => {
+          if (value.indexOf(opt.value.toString()) > -1) {
+            closableMultipleButtons.push(
+              <button
+                className='SelectInput-removeMultipleButton'
+                aria-label='Click to remove this option'
+                onClick={e => this.removeOpt(e, opt.value)}
+              >
+                {opt.label}
+                <span className='SelectInput-removeMultipleButton-x' />
+              </button>
+            )
+          }
+        })
+      } else {
+        if (multiple) {
+          activeOptLabel = ''
+          options.forEach(opt => {
+            if (value.indexOf(opt.toString()) > -1) {
+              closableMultipleButtons.push(
+                <button
+                  className='SelectInput-removeMultipleButton'
+                  aria-label='Click to remove this option'
+                  onClick={e => this.removeOpt(e, opt)}
+                >
+                  {opt}
+                  <span className='SelectInput-removeMultipleButton-x' />
+                </button>
+              )
+            }
+          })
+        } else {
+          activeOptLabel = options.filter(
+            opt => opt.value.toString() === value.toString()
+          )[0]
+          activeOptLabel = activeOptLabel ? activeOptLabel.label : 'Select'
+        }
+      }
     }
 
     const typeAheadDisplay = this.state.sortBy
@@ -621,6 +711,7 @@ class SelectInput extends React.Component {
           </select>
         </label>
         {clearButton}
+        {closableMultipleButtons}
       </div>
     )
   }
@@ -635,6 +726,7 @@ SelectInput.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   loading: PropTypes.string,
+  multiple: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   onChange: PropTypes.func.isRequired,

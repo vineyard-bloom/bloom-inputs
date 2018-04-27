@@ -91,6 +91,66 @@ SELECT INPUT
     position: absolute;
     width: 30px;
   }
+
+  &-removeMultipleButton {
+    align-items: center;
+    background-color: $white;
+    border: 1px solid $med-gray;
+    border-radius: $border-radius;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: space-between;
+    margin-left: $pad-mar-small;
+    margin-top: $pad-mar-small;
+    min-height: 30px;
+    min-width: 30px;
+    padding: $pad-mar-small $pad-mar-med;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    &-x {
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Grey_close_x.svg');
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 60%;
+      height: 20px;
+      display: inline-block;
+      margin-left: $pad-mar-small;
+      width: 20px;
+    }
+  }
+}
+
+.SelectInput-opt {
+  background-color: $white;
+  border: none;
+  box-shadow: none;
+  color: $dark-gray;
+  cursor: pointer;
+  display: inline-block;
+  padding: $pad-mar-small $pad-mar-med;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  z-index: $z-20;
+
+  &:focus,
+  &:hover {
+    background-color: $lighter-gray;
+    color: $dark-gray;
+    outline: none;
+  }
+
+  &.is-selected,
+  &.is-selected:focus,
+  &.is-selected:hover {
+    background-color: $white;
+    color: $med-gray;
+    cursor: not-allowed;
+    font-weight: 600;
+  }
 }
 
 .SelectInput-opts {
@@ -105,25 +165,4 @@ SELECT INPUT
   position: absolute;
   width: 100%;
   z-index: $z-10;
-
-  button {
-    background-color: $white;
-    border: none;
-    box-shadow: none;
-    color: $dark-gray;
-    cursor: pointer;
-    display: inline-block;
-    padding: $pad-mar-small $pad-mar-med;
-    position: relative;
-    text-align: left;
-    width: 100%;
-    z-index: $z-20;
-
-    &:focus,
-    &:hover {
-      background-color: $lighter-gray;
-      color: $dark-gray;
-      outline: none;
-    }
-  }
 }

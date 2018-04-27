@@ -67,7 +67,7 @@ const ExampleForm = props => {
       id='example-form'
       className='Form AuthForm'
       noValidate
-      style={{ padding: '0 50px' }}
+      style={{ margin: '0 auto', maxWidth: '900px', padding: '0 50px' }}
     >
       <h3 className='AuthForm-header'>Example Form</h3>
       <TextInput
@@ -168,7 +168,7 @@ const ExampleForm = props => {
             : '0'
         }
       />
-      <div style={{ zIndex: 6 }}>
+      <div style={{ zIndex: 7 }}>
         {/* notice the z-indices to help make sure select inputs overlap properly */}
         <SelectInput
           options={selectOptions}
@@ -192,7 +192,7 @@ const ExampleForm = props => {
           }
         />
       </div>
-      <div style={{ zIndex: 5 }}>
+      <div style={{ zIndex: 6 }}>
         <SelectInput
           options={selectOptions}
           name='select2'
@@ -209,7 +209,6 @@ const ExampleForm = props => {
             value,
             type = 'text'
           ) => {
-            console.log(formId, name, value, type)
             props.manualFieldUpdate(formId, name, value, type)
             updateOptions(value)
           }}
@@ -222,6 +221,32 @@ const ExampleForm = props => {
           }
         />
       </div>
+      <br />
+      <br />
+      <div style={{ zIndex: 5 }}>
+        <SelectInput
+          error={
+            formData.select4 && formData.select4.error
+              ? formData.select4.error
+              : ''
+          }
+          formId='example-form'
+          label='Select Input -- Multiple'
+          multiple
+          name='select4'
+          onChange={props.manualFieldUpdate}
+          options={selectOptions}
+          showLabel
+          typeAhead={true}
+          value={
+            formData.select4 && formData.select4.value
+              ? formData.select4.value
+              : ''
+          }
+        />
+      </div>
+      <br />
+      <br />
       <div style={{ zIndex: 4 }}>
         <SelectInput
           options={selectOptions}
