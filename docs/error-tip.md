@@ -6,6 +6,8 @@ The ErrorTip was designed to render on every bloom-inputs input that has an `err
 
 ### Example
 ```
+  import { ErrorTip } from 'bloom-inputs'
+
   <ErrorTip
     contents='This section must be fully populated before submission.'
     direction='right'

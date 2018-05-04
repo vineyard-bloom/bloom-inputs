@@ -7,6 +7,8 @@ You can pass in any props outside of those listed below, but they must be HTML5 
 ### Examples:
 #### General:
 ```
+  import { CurrencyInput } from 'bloom-inputs'
+
   <CurrencyInput
     currency='ETH'
     error={this.props.amount.error}
@@ -19,6 +21,8 @@ You can pass in any props outside of those listed below, but they must be HTML5 
 
 #### Bloom-Forms use:
 ```
+  import { CurrencyInput } from 'bloom-inputs'
+
   const { checkField, formData, updateField } = this.props
   
   ...

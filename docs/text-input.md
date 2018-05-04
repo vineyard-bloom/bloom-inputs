@@ -5,6 +5,8 @@ TextInput is a single line text input used most often in forms.
 ### Examples
 #### General
 ```
+  import { TextInput } from 'modules/bloom-inputs'
+
   <TextInput
     label='First Name'
     name='firstName'
@@ -15,6 +17,8 @@ TextInput is a single line text input used most often in forms.
 
 #### Bloom-Forms use
 ```
+  import { TextInput } from 'modules/bloom-inputs'
+
   const { checkField, formData, updateField } = this.props
 
   <TextArea

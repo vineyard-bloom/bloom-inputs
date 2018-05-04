@@ -5,6 +5,8 @@ A `<select>` input that's fully accessible and fully-stylable. This is the most 
 ### Examples
 #### General
 ```
+  import { SelectInput } from 'bloom-inputs'
+
   const options = [
     {
       label: '0 - 18',
@@ -49,6 +51,8 @@ A `<select>` input that's fully accessible and fully-stylable. This is the most 
 
 #### Bloom-Forms use
 ```
+  import { SelectInput } from 'bloom-inputs'
+
   const { checkField, formData, formId, manualFieldUpdate } = this.props
   const options = [
     {

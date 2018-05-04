@@ -4,6 +4,8 @@ A file input that supports drag and drop and multiple files. Forked and reworked
 ### Examples
 #### General
 ```
+  import { Dropzone } from 'bloom-inputs'
+
   <Dropzone
     accept='.jpg'
     files={this.props.profileImage.value}
@@ -15,6 +17,8 @@ A file input that supports drag and drop and multiple files. Forked and reworked
 
 #### Bloom-Forms use
 ```
+  import { Dropzone } from 'bloom-inputs'
+
   const { checkField, formData, manualFieldUpdate } = this.props
 
   ...

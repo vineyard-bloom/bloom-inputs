@@ -7,6 +7,8 @@ An input type='date' styled like other bloom-inputs. All date-picking functional
 ### Examples
 #### General
 ```
+  import { DateInput } from 'bloom-inputs'
+  
   <DateInput
     error={this.props.date.error}
     label='Date Joined'
@@ -18,6 +20,8 @@ An input type='date' styled like other bloom-inputs. All date-picking functional
 
 #### Bloom-Forms use
 ```
+  import { DateInput } from 'bloom-inputs'
+
   const { checkField, formData, updateField } = this.props
   
   ...
