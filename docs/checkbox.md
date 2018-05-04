@@ -9,6 +9,8 @@ The checked background image of the Checkbox can be styled via `.Input--checked-
 ```
   import { Checkbox } from 'bloom-inputs'
 
+  ...
+
   <Checkbox
     checked={!!this.props.agreed.value}
     error={this.props.agreed.error}
@@ -22,8 +24,10 @@ The checked background image of the Checkbox can be styled via `.Input--checked-
 ```
   import { Checkbox } from 'bloom-inputs'
 
+  ...
+
   const { checkField, formData, updateField } = this.props
-  
+
   ...
 
   <Checkbox

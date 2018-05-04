@@ -10,6 +10,8 @@ RadioButtonGroup behaves nearly identically to RadioGroup but has the styling of
 ```
   import { RadioGroup, RadioButtonGroup } from 'bloom-inputs'
 
+  ...
+
   const options = [
     {
       id: 'x-small',
@@ -42,6 +44,8 @@ RadioButtonGroup behaves nearly identically to RadioGroup but has the styling of
 #### Bloom-Forms use
 ```
   import { RadioGroup, RadioButtonGroup } from 'bloom-inputs'
+
+  ...
 
   const { checkField, formData, updateField } = this.props
   const options = [

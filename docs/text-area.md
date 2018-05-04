@@ -7,6 +7,8 @@ TextArea is a multi-line text input for large amounts of text. Uses HTML5 `<text
 ```
   import { TextArea } from 'bloom-inputs'
 
+  ...
+
   <TextArea
     label='Comment'
     name='comment'
@@ -18,6 +20,8 @@ TextArea is a multi-line text input for large amounts of text. Uses HTML5 `<text
 #### Bloom-Forms use
 ```
   import { TextArea } from 'bloom-inputs'
+  
+  ...
 
   const { checkField, formData, updateField } = this.props
 
