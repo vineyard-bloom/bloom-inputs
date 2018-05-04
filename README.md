@@ -10,6 +10,13 @@ The requirements surrounding accessibility in user-driven fields can be a lot of
 You can boot up an example form in a browser to play with the inputs by going into this repo's /example folder.
 Install dependencies with `npm install` and run with `npm run dev`. The inputs are imported directly from the root, so changes to those will be reflected immediately.
 
+## Installation
+`npm install bloom-inputs`
+
+or
+
+`yarn add bloom-inputs`
+
 ## Contents
 - [Checkbox](https://github.com/vineyard-bloom/bloom-inputs/blob/master/docs/checkbox.md)
 - [CurrencyInput](https://github.com/vineyard-bloom/bloom-inputs/blob/master/docs/currency-input.md)
