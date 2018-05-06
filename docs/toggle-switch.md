@@ -5,6 +5,10 @@ The ToggleSwitch is a hidden checkbox that appears in the UI like a sideways lig
 ### Examples
 #### General
 ```
+  import { ToggleSwitch } from 'bloom-inputs'
+
+  ...
+
   <ToggleSwitch
     name='notifications'
     innerLabels={{ on: 'On', off: 'Off' }}
@@ -16,6 +20,10 @@ The ToggleSwitch is a hidden checkbox that appears in the UI like a sideways lig
 
 #### Bloom-Forms use
 ```
+  import { ToggleSwitch } from 'bloom-inputs'
+
+  ...
+
   const { formData, updateField } = this.props
   
   ...

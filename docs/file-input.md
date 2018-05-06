@@ -5,6 +5,10 @@ Inline file input that does not support drag and drop.
 ### Examples
 #### General
 ```
+  import { FileInput } from 'bloom-inputs'
+  
+  ...
+
   <FileInput
     accept='.jpg'
     clearable
@@ -17,6 +21,10 @@ Inline file input that does not support drag and drop.
 
 #### Bloom-Forms use
 ```
+  import { FileInput } from 'bloom-inputs'
+
+  ...
+  
   const { checkField, formData, manualFieldUpdate } = this.props
 
   ...
