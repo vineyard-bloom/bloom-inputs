@@ -418,6 +418,7 @@ class SelectInput extends React.Component {
             tabIndex={isSelected ? -1 : 1}
             onClick={e => {
               e.preventDefault()
+              this.setState({ selectValue: opt.value })
               this.selectOpt(opt.value)
             }}
             aria-labelledby={`${name}-opt-${i}-text`}
@@ -435,6 +436,7 @@ class SelectInput extends React.Component {
             tabIndex={isSelected ? -1 : 1}
             onClick={e => {
               e.preventDefault()
+              this.setState({ selectValue: opt })
               this.selectOpt(opt)
             }}
             aria-labelledby={`${name}-opt-${i}-text`}
@@ -646,18 +648,16 @@ class SelectInput extends React.Component {
             !suppressErrors && (
               <ErrorTip contents={err} className='ErrorTip--select' />
             )}
-          {this.state.showList && (
-            <ul
-              className='SelectInput-opts'
-              aria-atomic
-              aria-expanded={this.state.showList}
-              aria-labelledby={`${name}-label-text`}
-              id={name}
-              role='listbox'
-            >
-              {placeholderOpts}
-            </ul>
-          )}
+          <ul
+            className={this.state.showList ? 'SelectInput-opts show-list' : 'SelectInput-opts hide-list' }
+            aria-atomic
+            aria-expanded={this.state.showList}
+            aria-labelledby={`${name}-label-text`}
+            id={name}
+            role='listbox'
+          >
+            {placeholderOpts}
+          </ul>
         </span>
       </div>
     )
