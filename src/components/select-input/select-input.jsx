@@ -418,7 +418,6 @@ class SelectInput extends React.Component {
             tabIndex={isSelected ? -1 : 1}
             onClick={e => {
               e.preventDefault()
-              this.setState({ selectValue: opt.value })
               this.selectOpt(opt.value)
             }}
             aria-labelledby={`${name}-opt-${i}-text`}
@@ -436,7 +435,6 @@ class SelectInput extends React.Component {
             tabIndex={isSelected ? -1 : 1}
             onClick={e => {
               e.preventDefault()
-              this.setState({ selectValue: opt })
               this.selectOpt(opt)
             }}
             aria-labelledby={`${name}-opt-${i}-text`}
