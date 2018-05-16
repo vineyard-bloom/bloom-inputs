@@ -148,11 +148,11 @@ describe('<SelectInput />', () => {
     beforeEach(() => resetWrappers())
 
     it('hides the options by default (typeahead)', () => {
-      assert.ok(typeaheadSelectWrapper.find('.SelectInput-opts hide-list'))
+      assert.ok(typeaheadSelectWrapper.find('.SelectInput-opts.hide-list'))
       assert.equal(typeaheadSelectWrapper.state().showList, false)
     })
     it('hides the options by default (button)', () => {
-      assert.ok(buttonSelectWrapper.find('.SelectInput-opts hide-list'))
+      assert.ok(buttonSelectWrapper.find('.SelectInput-opts.hide-list'))
       assert.equal(buttonSelectWrapper.state().showList, false)
     })
 
