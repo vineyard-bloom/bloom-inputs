@@ -154,15 +154,26 @@ SELECT INPUT
 }
 
 .SelectInput-opts {
+  animation-timing-function:ease-out;
   background-color: $white;
   box-shadow: $box-shadow-no-top;
   left: 0;
-  margin-top: 50px;
   max-height: 200px;
+  margin-top: 50px;
   min-width: 300px;
   overflow-x: hidden;
   overflow-y: scroll;
   position: absolute;
+  transition: max-height 0.25s;
   width: 100%;
+  -webkit-transition: max-height 0.25s;
   z-index: $z-10;
+
+  &.show-list {
+    max-height: 200px;
+  }
+
+  &.hide-list {
+    max-height: 0px;
+  }
 }
