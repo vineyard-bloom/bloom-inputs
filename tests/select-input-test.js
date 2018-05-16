@@ -148,14 +148,12 @@ describe('<SelectInput />', () => {
     beforeEach(() => resetWrappers())
 
     it('hides the options by default (typeahead)', () => {
-      const typeaheadOptions = typeaheadSelectWrapper.find('.SelectInput-opts')
+      assert.ok(typeaheadSelectWrapper.find('.SelectInput-opts hide-list'))
       assert.equal(typeaheadSelectWrapper.state().showList, false)
-      assert.ok(!typeaheadOptions.length)
     })
     it('hides the options by default (button)', () => {
-      const buttonOptions = buttonSelectWrapper.find('.SelectInput-opts')
+      assert.ok(buttonSelectWrapper.find('.SelectInput-opts hide-list'))
       assert.equal(buttonSelectWrapper.state().showList, false)
-      assert.ok(!buttonOptions.length)
     })
 
     it('opens the options on focus (typeahead)', () => {
