@@ -154,6 +154,7 @@ SELECT INPUT
 }
 
 .SelectInput-opts {
+  animation-timing-function:ease-out;
   background-color: $white;
   box-shadow: $box-shadow-no-top;
   left: 0;
@@ -166,7 +167,6 @@ SELECT INPUT
   transition: max-height 0.25s;
   width: 100%;
   -webkit-transition: max-height 0.25s;
-  animation-timing-function:ease-out;
   z-index: $z-10;
 
   &.show-list {
